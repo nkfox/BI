@@ -1,0 +1,58 @@
+.members {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    outline: dotted 1px red;
+    width: 100%;
+    height: auto;
+    background-color: #d9e7f8 ;
+}
+
+.members h3 {
+    padding-top: 20px;
+    margin-left: 10px;
+}
+
+.mems{
+    padding-bottom: 10px ;
+    margin-left: 10px;
+    outline: dotted 1px red;
+    width: 20%;
+    text-align: center;
+}
+
+.mems-img {
+    width: 40%;
+}
+
+#createMember {
+    color: white;
+    background-color: #43d226;
+    width: 90px;
+    padding-left: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top:142px;
+    left: 150px;
+}
+
+#registerMem {
+    /*display: none;*/
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 300px;
+}
+
+nav {
+    display: inline-block;
+}
+
+ul {
+    display: inline-block;
+}
+
+form {
+    display: inline-block;
+}
+input {
+    display: inline-block;
+}

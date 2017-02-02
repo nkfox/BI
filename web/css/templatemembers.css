@@ -1,0 +1,162 @@
+*{
+    box-sizing: content-box;
+}
+
+.members {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    border-radius: 5px;
+    /*border: dotted 1px red;*/
+    width: 100%;
+    height: auto;
+    background-color: #d9e7f8 ;
+    padding-bottom: 30px;
+}
+
+.members h3 {
+    padding-top: 20px;
+    margin-left: 10px;
+}
+
+.mems{
+    padding-bottom: 10px ;
+    margin-left: 10px;
+    outline: dotted 1px red;
+    width: 20%;
+    text-align: center;
+}
+
+.mems-img {
+    width: 40%;
+}
+
+#createMember {
+    color: white;
+    background-color: #43d226;
+    width: 90px;
+    padding-left: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top:142px;
+    left: 150px;
+}
+
+#registerMem {
+    border: 1px red solid;
+    /*display: none;*/
+    position: absolute;
+    margin-top: 110px;
+    margin-left: 1000px;
+    padding: 20px;
+    background-color: #cedce7;
+    border-radius: 5px;
+    /*text-align: center;*/
+}
+
+input:nth-child(2){
+    margin-left: 15px;
+}
+
+input:nth-child(5){
+    margin-left: 2px;
+}
+
+input:nth-child(8){
+    margin-left: 8px;
+}
+
+input:nth-child(11){
+    margin-left: 18px;
+}
+
+input:nth-child(14){
+    margin-left: 11px;
+}
+
+.submit {
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+/* Table style */
+
+table {
+    width: 50%;
+    margin-left: 20px;
+    max-width: 60%;
+    border-collapse: collapse;
+    border: 1px dotted #373733;
+    text-align: center;
+}
+
+tr:nth-child(odd) {
+    background-color: #f8faef;
+}
+
+th {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+td {
+    padding: 15px;
+}
+
+tr {
+    background-color: #ffeef2;
+}
+
+tr:hover{
+    background-color: #bbc8d4;
+    border: 1px solid deepskyblue;
+}
+
+#footer {
+    margin-top: 0;
+}
+
+#btn{
+    padding: 10px 15px;
+    /*display: none;*/
+    margin-left: 80px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+input#email:invalid {
+    border: 1px solid red;
+}
+
+input#email:valid {
+    border: 1px solid green;
+}
+
+input#phone:invalid {
+    border: 1px solid red;
+}
+
+input#phone:valid {
+    border: 1px solid green;
+}
+
+input#email:valid , input#phone:valid~#btn {
+    display: inline-block;
+}

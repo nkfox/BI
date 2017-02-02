@@ -1,0 +1,401 @@
+* {
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+
+/*начало header*/
+
+header{
+    margin: -4px 0 0 0 ;
+    padding: 0 0 0 0;
+    height: 100px;
+    width: 100%;
+    display: block;
+    /*outline: dotted red;*/
+    /*background-color: #daecff;*/
+
+}
+
+.logo {
+    width: 30%;
+    height: 100%;
+    /*outline: dotted blue;*/
+    text-align: center;
+    display: inline-block;
+    margin: 0 0 0 0 ;
+}
+
+.logo div {
+    margin-top: 10px;
+}
+
+span {
+    font: 16px 'Oswald' , sans-serif;
+
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    width: 25%;
+    height: 60%;
+}
+
+nav {
+    display: inline-block;
+    width: auto;
+    float: right;
+}
+
+nav ul {
+    padding: 0;
+    margin-top: 35px;
+    margin-right: 40px;
+}
+nav li {
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 10px;
+}
+nav li:hover{
+    background-color: #e8f6ff;
+    cursor: pointer;
+}
+
+nav a:hover {
+    cursor: pointer;
+}
+
+nav a {
+    list-style: none;
+    text-decoration: none;
+    font: 18px 'Oswald' ,sans-serif;
+    color: darkgreen;
+}
+
+/*конец header*/
+/*Athelas
+/*Oswald
+
+/*начало carousel*/
+
+#carousel{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 400px;
+    /*outline: dotted green;*/
+}
+
+.sliders{
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+/*конец carousel*/
+
+/*начало event*/
+
+hr {
+    margin-top: -14px;
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+
+/*hr:after {*/
+    /*content: "§";*/
+    /*display: inline-block;*/
+    /*position: relative;*/
+    /*top: -0.7em;*/
+    /*font-size: 1.5em;*/
+    /*padding: 0 0.25em;*/
+    /*background: #C6E2FF;*/
+/*}*/
+
+#event {
+    padding-top: 20px;
+    width: 100%;
+    height: 750px;
+    background-color: #C6E2FF;
+    margin-top: -16px;
+    /*outline: dotted #feff51;*/
+}
+
+#event > h3 {
+    font: 20px 'Oswald' , serif;
+    margin-top: 30px;
+    margin-left: 80px;
+    text-transform: capitalize;
+    color: black;
+}
+
+.events {
+    border-radius: 5px;
+}
+
+.description {
+    margin-top: 20px;
+    max-width: 310px;
+    background-color: #cff8ec;
+    display: none;
+    height: auto;
+}
+
+.events1:hover .description1 {
+    display: block;
+    position: absolute;
+}
+
+.events1:hover {
+    border: 1px solid greenyellow;
+}
+
+.events2:hover{
+    border: 1px solid greenyellow;
+}
+.events3:hover{
+    border: 1px solid greenyellow;
+}
+
+.events4:hover{
+    border: 1px solid greenyellow;
+}
+
+.events2:hover .description2 {
+    display: block;
+    position: absolute;
+}
+
+.events3:hover .description3 {
+    display: block;
+    position: absolute;
+}
+
+.events4:hover .description4 {
+    display: block;
+    position: absolute;
+}
+
+.seeall {
+    padding: 0;
+    margin-top: 17%;
+    text-align: center;
+}
+
+.seeall a {
+    color: #43d226;
+    font-size: 20px;
+}
+
+.data {
+    padding-top: 10px;
+}
+
+.events {
+    text-align: center;
+    margin-top: 10px;
+    display: inline-block;
+    height: 340px;
+    width: 24.5%;
+    border: 1px solid black;
+    padding: 0;
+}
+
+.events img {
+    width: 100%;
+    height: 80%;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.events span {
+    padding: 0;
+    margin: 0;
+}
+
+.events > * {
+    vertical-align: middle;
+}
+
+.events:hover {
+    background-color: #e8f6ff;
+    cursor: pointer;
+}
+
+/*конец event*/
+
+
+
+
+
+/*начало project*/
+
+#project {
+    padding-top: 20px;
+    width: 100%;
+    height: 600px;
+    background-color: #f8f6dd;
+    margin-top: -16px;
+}
+
+#project > h3 {
+    font: 20px 'Oswald' , serif;
+    margin-top: 30px;
+    margin-left: 80px;
+    text-transform: capitalize;
+    color: black;
+}
+
+.projects {
+    margin-left:80px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 10px;
+    display: inline-block;
+    height: 340px;
+    width: 40.5%;
+    border: 1px solid black;
+    padding: 0;
+}
+
+.projects2 {
+    /*background-color: blue;*/
+    margin-left: 60px;
+}
+
+.seeall2{
+    margin-top: 8%;
+}
+
+.projects img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    width: 85%;
+    height: 60%;
+}
+
+
+
+/*конец project*/
+
+/*начало footer*/
+
+
+footer {
+    background: #daecff;
+    color: black;
+    font-size: 13px;
+
+}
+
+#footer {
+    width: 100%;
+    margin-top: 5px;
+    padding: 0;
+    height: 140px;
+}
+
+footer h3 {
+    font: 20px 'Oswald', sans-serif;
+    color: black;
+    border-bottom: 2px solid black;
+    margin: 10px 0 10px 0;
+}
+
+#twitter time a {
+    color: #b4aeae;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+#twitter {
+    float: left;
+    width: 300px;
+}
+
+#twitter p {
+    padding-right: 15px;
+}
+
+footer a {
+    color: black;
+}
+
+#sitemap {
+    width: 150px;
+    float: left;
+    margin-left: 20px;
+    padding-right: 15px;
+}
+
+#sitemap div {
+    display: inline-block;
+}
+
+#sitemap div + div {
+    margin-left: 40px;
+}
+
+#sitemap a {
+    display: block;
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+#sitemap a:hover {
+    text-decoration: underline;
+}
+
+#social {
+    float: left;
+    margin-left: 20px;
+    width: 130px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    background: url(../images/social.png) no-repeat;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icon-small  {
+    width: 16px;
+    height: 16px;
+    background: url(../images/social-small.png) no-repeat;
+    display: inline-block;
+    margin: 5px 6px 0 0;
+}
+
+#footer-logo {
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+    font-size: 14px;
+    text-align: right;
+}
