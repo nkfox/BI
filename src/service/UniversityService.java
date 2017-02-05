@@ -1,6 +1,6 @@
 package service;
 
-import model.News;
+import model.University;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,19 +14,19 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Hibernate connection to news table.
- * Created by Nataliia Kozoriz on 22/01/2017.
+ * Hibernate connection to university table.
+ * Created by Nataliia Kozoriz on 04/02/2017.
  */
-@Service("newsService")
+@Service("universityService")
 @Transactional
-public class NewsService {
+public class UniversityService {
 
     @Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
-    private static final Logger logger = Logger.getLogger(NewsService.class);
+    private static final Logger logger = Logger.getLogger(UniversityService.class);
 
-    public NewsService() {
+    public UniversityService() {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
@@ -37,64 +37,65 @@ public class NewsService {
     }
 
     /**
-     * Retrieves all news
+     * Retrieves all universities
      *
-     * @return a list of news
+     * @return a list of universities
      */
-    public List<News> getAll() {
+    public List<University> getAll() {
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery("FROM News");
+        Query query = session.createQuery("FROM University");
         return query.list();
     }
 
     /**
-     * Retrieves a single news
+     * Retrieves a single university
      */
-    public News get(Integer id) {
+    public University get(String id) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        News news = (News) session.get(News.class, id);
+        University university = (University) session.get(University.class, id);
         transaction.commit();
-        return news;
+        return university;
     }
 
     /**
-     * Adds a new news
+     * Adds a new university
      */
-    public void add(News news) {
+    public void add(University university) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        session.save(news);
+        session.save(university);
         transaction.commit();
     }
 
     /**
-     * Deletes an existing news
+     * Deletes an existing university
      *
-     * @param id the id of the existing news
+     * @param id the id of the existing university
      */
-    public void delete(Integer id) {
+    public void delete(String id) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        News news = (News) session.get(News.class, id);
-        session.delete(news);
+        University university = (University) session.get(University.class, id);
+        session.delete(university);
         transaction.commit();
     }
 
     /**
      * Edits an existing person
      */
-    public void edit(News news) {
+    public void edit(University university) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        News existingNews = (News) session.get(News.class, news.getId());
+        University existingUniversity = (University) session.get(University.class, university.getEmail());
 
-        existingNews.setTitle(news.getTitle());
-        existingNews.setAuthor(news.getAuthor());
-        existingNews.setDate(news.getDate());
-        existingNews.setDescription(news.getDescription());
+        existingUniversity.setName(university.getName());
+        existingUniversity.setCountry(university.getCountry());
+        existingUniversity.setInfo(university.getInfo());
+        existingUniversity.setPicture(university.getPicture());
+        existingUniversity.setCity(university.getCity());
 
-        session.save(existingNews);
+        session.save(existingUniversity);
         transaction.commit();
     }
 }

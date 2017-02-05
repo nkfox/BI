@@ -11,7 +11,7 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/bi</property>
         <property name="connection.username">root</property>
-        <property name="connection.password"/>
+        <property name="connection.password"></property>
 
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
@@ -31,8 +31,12 @@
         <!-- Mapping files -->
         <mapping class="model.News"/>
         <mapping class="model.Event"/>
-        <mapping class="model.Member"/>
         <mapping class="model.Project"/>
+        <mapping class="model.Member"/>
+        <mapping class="model.University"/>
+        <mapping class="model.Person"/>
+        <mapping class="model.Student"/>
+        <mapping class="model.Teacher"/>
 
     </session-factory>
 

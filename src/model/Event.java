@@ -6,11 +6,12 @@ import java.sql.Date;
 
 /**
  * This class includes all information about events.
- * Created by Nataliia Kozoriz on 15.11.2016.
+ * Created by Nataliia Kozoriz on 15/11/2016.
  */
 @Entity
 @Table(name = "event")
 public class Event implements Serializable {
+
     @Id
     @Column(name = "id")
     @GeneratedValue

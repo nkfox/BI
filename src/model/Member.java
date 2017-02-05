@@ -1,18 +1,17 @@
 package model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /**
- * This class includes all information about members.
- * Created by Nataliia Kozoriz on 15.11.2016.
+ * This class is abstract. Used for University and Person.
+ * Created by Nataliia Kozoriz on 15/11/2016.
  */
-@Entity
-@Table(name = "member")
+@MappedSuperclass
 public class Member implements Serializable {
+
     @Id
     @Column(name = "email")
     String email;
@@ -23,25 +22,29 @@ public class Member implements Serializable {
     @Column(name = "country")
     String country;
 
-    @Column(name = "phone")
-    String phone;
+    @Column(name = "info")
+    String info;
+
+    @Column(name = "picture")
+    String picture;
 
     public Member() {
     }
 
-    public Member(String email, String name, String country, String phone) {
+    public Member(String email, String name, String country, String info, String picture) {
         this.email = email;
         this.name = name;
         this.country = country;
-        this.phone = phone;
+        this.info = info;
+        this.picture = picture;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
     }
 
     public String getName() {
@@ -60,11 +63,19 @@ public class Member implements Serializable {
         this.country = country;
     }
 
-    public String getEmail() {
-        return email;
+    public String getInfo() {
+        return info;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

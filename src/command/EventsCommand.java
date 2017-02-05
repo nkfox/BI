@@ -1,25 +1,26 @@
 package command;
 
 import model.Event;
-import service.EventsService;
+import org.apache.log4j.Logger;
+import service.EventService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * This command shows all events
- * Created by Nataliia Kozoriz on 14.11.2016.
+ * This command loads all events into session.
+ * Created by Nataliia Kozoriz on 14/11/2016.
  */
-public class EventCommand implements Command {
+public class EventsCommand implements Command {
+
+    private static final Logger logger = Logger.getLogger(EventsCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            EventsService eService = new EventsService();
+            EventService eService = new EventService();
             List<Event> events = eService.getAll();
 
             HttpSession session = request.getSession(true);
@@ -27,7 +28,7 @@ public class EventCommand implements Command {
 
             return EVENTS;
         } catch (Exception ex) {
-            Logger.getLogger(EventCommand.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("DBError", ex);
         }
         return START_PAGE;
     }

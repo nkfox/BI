@@ -56,3 +56,8 @@ form {
 input {
     display: inline-block;
 }
+
+.member-picture {
+    width: 90%;
+    height: 100%;
+}

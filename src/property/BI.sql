@@ -2,6 +2,57 @@ drop database bi;
 create database bi;
 use bi;
 
+create table university(
+  email CHAR(255) PRIMARY KEY,
+  name CHAR(255) NOT NULL,
+  country CHAR(255) NOT NULL,
+  info text,
+  picture CHAR(255) NOT NULL,
+  city CHAR(255) NOT NULL
+);
+
+INSERT INTO university
+VALUES ('knu@gmail.com', 'Taras Shevchenko National University of Kiev', 'Ukraine', '7th in the world', 'tsnuk', 'Kiev'),
+  ('ttu@gmail.com', 'Tallinn University of Technology', 'Estonia', 'one of the best', 'ttu', 'Tallin'),
+  ('ntnu@gmail.com', 'Norvegian University of Science and Technology', 'Norway', 'good univ', 'ntnu', 'Oslo');
+
+create table student(
+  email CHAR(255) PRIMARY KEY,
+  name CHAR(255) NOT NULL,
+  country CHAR(255) NOT NULL,
+  info text,
+  picture CHAR(255) NOT NULL,
+  birthDate DATETIME NOT NULL,
+  university CHAR(255) NOT NULL,
+  faculty CHAR(255) NOT NULL,
+  speciality CHAR(255) NOT NULL,
+  year CHAR(255) NOT NULL,
+
+  FOREIGN KEY (university) REFERENCES university(email)
+);
+
+INSERT INTO student
+VALUES ('vl@ukr.net', 'Владислав Побоченко', 'Украина', 'frontend dev', 'v.p', '1995-09-09','knu@gmail.com', 'cybernetics', 'MI', '1 master'),
+  ('nt@gmail.com', 'Наталья Козорез', 'Украина', 'backend dev', 'n.k', '1994-12-16','knu@gmail.com', 'cybernetics', 'BI', '1 master'),
+  ('grom@gmail.com', 'Hryhoriy Omelianenko', 'Украина', 'designer', 'h.o', '1994-06-11','knu@gmail.com', 'cybernetics', 'TK', '1 master');
+
+create table teacher(
+  email CHAR(255) PRIMARY KEY,
+  name CHAR(255) NOT NULL,
+  country CHAR(255) NOT NULL,
+  info text,
+  picture CHAR(255) NOT NULL,
+  birthDate DATETIME NOT NULL,
+  university CHAR(255) NOT NULL,
+  post CHAR(255) NOT NULL,
+  degree CHAR(255) NOT NULL
+);
+
+INSERT INTO teacher
+VALUES ('vz@gmail.com', 'Volodymyr Zaslavsky', 'Ukraine', 'innivation', 'v.z', '1957-07-21','knu@gmail.com', 'Professor', 'Doctor of Engineering');
+
+
+
 CREATE TABLE event (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   title CHAR(255) NOT NULL,
@@ -21,19 +72,6 @@ VALUES (1, 'КНУ', '22.11.16', '23.11.16', 'Читалка', 'Таблеточ
   (3, 'КПИ', '28.11.16', '30.11.16', '01аудитория', 'Михаил Круг', 'Ничего не надо делать!', 'Может и лучше'),
   (4, 'ДУТ', '30.11.16', '01.12.16', 'Конференц-зал', 'Андрей Царь', 'Будущее - все!', 'Все....или ничего');
 
-create table member(
-  email CHAR(255) PRIMARY KEY,
-  name CHAR(255) NOT NULL,
-  country CHAR(255) NOT NULL,
-  phone CHAR(255) NOT NULL
-);
-
-INSERT INTO member
-VALUES ('vl@ukr.net', 'Владислав Побоченко', 'Украина',  '0678888888'),
-  ('nt@ukr.net', 'Наталья Козорез', 'Украина',  '0671111111'),
-  ('pahan@ukr.net', 'Пашка Ходак', 'Украина',  '0677777777'),
-  ('dm@ukr.net', 'Дмитрий Цимбол', 'Украина',  '0672222222'),
-  ('ps@ukr.net', 'Паша Шкурыхин', 'Украина',  '0679999999');
 
 create table news(
   id INTEGER PRIMARY KEY AUTO_INCREMENT,

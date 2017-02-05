@@ -6,11 +6,12 @@ import java.sql.Date;
 
 /**
  * This class includes all information about news.
- * Created by Nataliia Kozoriz on 15.11.2016.
+ * Created by Nataliia Kozoriz on 15/11/2016.
  */
 @Entity
 @Table(name = "news")
 public class News implements Serializable {
+
     @Id
     @Column(name = "id")
     @GeneratedValue

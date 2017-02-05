@@ -1,6 +1,7 @@
 package service;
 
 import model.Project;
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,6 +14,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * Hibernate connection to project table.
  * Created by Nataliia Kozoriz on 22/01/2017.
  */
 @Service("projectService")
@@ -22,13 +24,14 @@ public class ProjectService {
     @Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
+    private static final Logger logger = Logger.getLogger(ProjectService.class);
+
     public ProjectService() {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
         } catch (Throwable ex) {
-            // Make sure you log the exception, as it might be swallowed
-            System.err.println("Initial SessionFactory creation failed." + ex);
+            logger.error("ExceptionInInitializerError", ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
@@ -39,14 +42,8 @@ public class ProjectService {
      * @return a list of projects
      */
     public List<Project> getAll() {
-
-        // Retrieve session from Hibernate
-        Session session = sessionFactory.openSession(); //.getCurrentSession();
-
-        // Create a Hibernate query (HQL)
+        Session session = sessionFactory.openSession();
         Query query = session.createQuery("FROM Project");
-
-        // Retrieve all
         return query.list();
     }
 
@@ -54,12 +51,10 @@ public class ProjectService {
      * Retrieves a single project
      */
     public Project get(Integer id) {
-        // Retrieve session from Hibernate
         Session session = sessionFactory.getCurrentSession();
-
-        // Retrieve existing person first
+        Transaction transaction = session.beginTransaction();
         Project project = (Project) session.get(Project.class, id);
-
+        transaction.commit();
         return project;
     }
 
@@ -67,16 +62,10 @@ public class ProjectService {
      * Adds a new project
      */
     public void add(Project project) {
-
-        // Retrieve session from Hibernate
         Session session = sessionFactory.getCurrentSession();
-
-        Transaction trans = session.beginTransaction();
-
-        // Save
+        Transaction transaction = session.beginTransaction();
         session.save(project);
-
-        trans.commit();
+        transaction.commit();
     }
 
     /**
@@ -85,27 +74,19 @@ public class ProjectService {
      * @param id the id of the existing project
      */
     public void delete(Integer id) {
-
-        // Retrieve session from Hibernate
         Session session = sessionFactory.getCurrentSession();
-
-        // Retrieve existing person first
+        Transaction transaction = session.beginTransaction();
         Project project = (Project) session.get(Project.class, id);
-
-        // Delete
         session.delete(project);
+        transaction.commit();
     }
 
     /**
      * Edits an existing person
      */
     public void edit(Project project) {
-        //logger.debug("Editing existing project"); !!!!!!!!!!!!!!!!!
-
-        // Retrieve session from Hibernate
         Session session = sessionFactory.getCurrentSession();
-
-        // Retrieve existing project via id
+        Transaction transaction = session.beginTransaction();
         Project existingProject = (Project) session.get(Project.class, project.getId());
 
         // Assign updated values to this project
@@ -116,7 +97,7 @@ public class ProjectService {
         existingProject.setOrganizer(project.getOrganizer());
         existingProject.setDescription(project.getDescription());
 
-        // Save updates
         session.save(existingProject);
+        transaction.commit();
     }
 }

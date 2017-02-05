@@ -13,9 +13,9 @@
         <%@include file="layout/header.jsp" %>
 
         <div id_members = "carousel">
-            <img src="../img/bui.jpg" class="sliders">
-            <img src="../img/warwick.jpg" class="sliders">
-            <img src="../img/nat.jpg" class="sliders">
+            <img src="../img/carousel/cybic.jpg" class="sliders">
+            <img src="../img/carousel/BI.jpg" class="sliders">
+            <img src="../img/carousel/chitalka.jpg" class="sliders">
         </div>
 
         <div id_members = "event">

@@ -1,20 +1,21 @@
 package command;
 
 import model.News;
+import org.apache.log4j.Logger;
 import service.NewsService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * This command shows all news
- * Created by Abdulla Atkaev on 14.11.2016.
+ * This command loads all news into session.
+ * Created by Nataliia Kozoriz 14/11/2016.
  */
 public class NewsCommand implements Command {
+
+    private static final Logger logger = Logger.getLogger(NewsCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -27,7 +28,7 @@ public class NewsCommand implements Command {
 
             return NEWS;
         } catch (Exception ex) {
-            Logger.getLogger(NewsCommand.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("DBError", ex);
         }
         return START_PAGE;
     }

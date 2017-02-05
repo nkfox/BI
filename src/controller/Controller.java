@@ -2,6 +2,7 @@ package controller;
 
 import command.Command;
 import command.CommandFactory;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import java.io.IOException;
  * Main controller
  */
 public class Controller extends HttpServlet {
+
+    private static final Logger logger = Logger.getLogger(Controller.class);
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
 
@@ -30,8 +33,9 @@ public class Controller extends HttpServlet {
             try {
                 rd.forward(request, response);
             } catch (ServletException e) {
-                e.printStackTrace();
+                logger.error("ServletException", ex);
             } catch (IOException e) {
+                logger.error("IOException", ex);
             }
         }
     }

@@ -1,20 +1,21 @@
 package command;
 
 import model.Project;
+import org.apache.log4j.Logger;
 import service.ProjectService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * This command shows all projects
- * Created by Nataliia Kozoriz on 14.11.2016.
+ * This command loads all projects into session.
+ * Created by Nataliia Kozoriz on 14/11/2016.
  */
-public class ProjectCommand implements Command {
+public class ProjectsCommand implements Command {
+
+    private static final Logger logger = Logger.getLogger(ProjectsCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -27,7 +28,7 @@ public class ProjectCommand implements Command {
 
             return PROJECTS;
         } catch (Exception ex) {
-            Logger.getLogger(ProjectCommand.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("DBError", ex);
         }
         return START_PAGE;
     }

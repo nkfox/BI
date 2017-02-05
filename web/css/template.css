@@ -379,7 +379,7 @@ footer a {
 .social-icon {
     width: 30px;
     height: 30px;
-    background: url(../images/social.png) no-repeat;
+    background: url(../img/social.png) no-repeat;
     display: inline-block;
     margin-right: 10px;
 }
@@ -387,7 +387,7 @@ footer a {
 .social-icon-small  {
     width: 16px;
     height: 16px;
-    background: url(../images/social-small.png) no-repeat;
+    background: url(../img/social-small.png) no-repeat;
     display: inline-block;
     margin: 5px 6px 0 0;
 }
@@ -398,4 +398,9 @@ footer a {
     margin-right: 10px;
     font-size: 14px;
     text-align: right;
+}
+
+.member-picture {
+    width: 90%;
+    height: 100%;
 }

@@ -1,17 +1,22 @@
 package command;
 
+import command.member.student.*;
+import command.member.teacher.*;
+import command.member.university.*;
+import org.apache.log4j.Logger;
+
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * This class is factory for all Commands
- * Created by Nataliia Kozoriz on 08.11.2016.
+ * Created by Nataliia Kozoriz on 08/11/2016.
  */
 public class CommandFactory {
+
+    private static final Logger logger = Logger.getLogger(CommandFactory.class);
 
     private final Map<String, Command> commandMap = new HashMap<>();
     private static CommandFactory instance = null;
@@ -23,8 +28,8 @@ public class CommandFactory {
         if (instance == null) {
             try {
                 instance = new CommandFactory();
-            } catch (NamingException ex) {
-                Logger.getLogger(CommandFactory.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                logger.error("NewInstanceError", ex);
             }
         }
         return instance;
@@ -32,13 +37,33 @@ public class CommandFactory {
 
     {
         commandMap.put("null", new EmptyCommand());
-        commandMap.put("showMembers", new MemberCommand());
-        commandMap.put("showEvents", new EventCommand());
-        commandMap.put("showProjects", new ProjectCommand());
-        commandMap.put("showNews", new NewsCommand());
-        commandMap.put("addMember", new AddMemberCommand());
+
+        commandMap.put("showUniversities", new UniversitiesCommand());
+        commandMap.put("showUniversity", new UniversityCommand());
+        commandMap.put("addUniversity", new AddUniversityCommand());
+        commandMap.put("editUniversity", new EditUniversityCommand());
+        commandMap.put("deleteUniversity", new DeleteUniversityCommand());
+
+        commandMap.put("showStudents", new StudentsCommand());
+        commandMap.put("showStudent", new StudentCommand());
+        commandMap.put("addStudent", new AddStudentCommand());
+        commandMap.put("editStudent", new EditStudentCommand());
+        commandMap.put("deleteStudent", new DeleteStudentCommand());
+
+        commandMap.put("showTeachers", new TeachersCommand());
+        commandMap.put("showTeacher", new TeacherCommand());
+        commandMap.put("addTeacher", new AddTeacherCommand());
+        commandMap.put("editTeacher", new EditTeacherCommand());
+        commandMap.put("deleteTeacher", new DeleteTeacherCommand());
+
+
+        commandMap.put("showEvents", new EventsCommand());
         commandMap.put("addEvent", new AddEventCommand());
+
+        commandMap.put("showProjects", new ProjectsCommand());
         commandMap.put("addProject", new AddProjectCommand());
+
+        commandMap.put("showNews", new NewsCommand());
     }
 
     public Command getCommand(HttpServletRequest request) {

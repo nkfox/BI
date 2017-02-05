@@ -1,13 +1,8 @@
 package command;
 
-import model.Event;
-import model.Member;
-import model.News;
-import model.Project;
-import service.EventsService;
-import service.MemberService;
-import service.NewsService;
-import service.ProjectService;
+import model.*;
+import org.apache.log4j.Logger;
+import service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,43 +11,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Empty command. Return path to home page
- * Created by Nataliia Kozoriz on 08.11.2016.
+ * Empty command. Return path to home page. Load all needed information.
+ * Created by Nataliia Kozoriz on 08/11/2016.
  */
 public class EmptyCommand implements Command {
+
+    private static final Logger logger = Logger.getLogger(EmptyCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-        NewsService nService = new NewsService();
-        List<News> news = nService.getAll();
+        try {
+            NewsService nService = new NewsService();
+            List<News> news = nService.getAll();
 
-        EventsService eService = new EventsService();
-        List<Event> events = eService.getAll();
+            EventService eService = new EventService();
+            List<Event> events = eService.getAll();
 
-        ProjectService pService = new ProjectService();
-        List<Project> projects = pService.getAll();
+            ProjectService pService = new ProjectService();
+            List<Project> projects = pService.getAll();
 
-        MemberService mService = new MemberService();
-        List<Member> members = mService.getAll();
+            UniversityService uService = new UniversityService();
+            List<University> universities = uService.getAll();
 
-        HttpSession session = request.getSession(true);
-        session.setAttribute("members", members);
-        session.setAttribute("events", events);
-        session.setAttribute("news", news);
-        session.setAttribute("projects", projects);
+            StudentService sService = new StudentService();
+            List<Student> students = sService.getAll();
 
-        List<Event> mainEvents = new ArrayList<>();
-        for (int i = 0; i < Math.min(4, events.size()); i++)
-            mainEvents.add(events.get(i));
+            HttpSession session = request.getSession(true);
+            session.setAttribute("universities", universities);
+            session.setAttribute("students", students);
+            session.setAttribute("events", events);
+            session.setAttribute("news", news);
+            session.setAttribute("projects", projects);
 
-        List<Project> mainProjects = new ArrayList<>();
-        for (int i = 0; i < Math.min(2, projects.size()); i++)
-            mainProjects.add(projects.get(i));
+            List<Event> mainEvents = new ArrayList<>();
+            for (int i = 0; i < Math.min(4, events.size()); i++)
+                mainEvents.add(events.get(i));
 
-        session.setAttribute("mainEvents", mainEvents);
-        session.setAttribute("mainProjects", mainProjects);
+            List<Project> mainProjects = new ArrayList<>();
+            for (int i = 0; i < Math.min(2, projects.size()); i++)
+                mainProjects.add(projects.get(i));
 
+            session.setAttribute("mainEvents", mainEvents);
+            session.setAttribute("mainProjects", mainProjects);
+        } catch (Exception ex) {
+            logger.error("DBError", ex);
+        }
         return START_PAGE;
     }
 }
